@@ -129,7 +129,7 @@ public class HomeActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(), "Medições realizadas com sucesso!", Toast.LENGTH_SHORT).show();
                         MEDIU = 5;
                     }
-                }, 5000);
+                }, 20000);
             }
         });
 

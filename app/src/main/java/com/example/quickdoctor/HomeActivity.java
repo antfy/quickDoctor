@@ -1,12 +1,10 @@
 package com.example.quickdoctor;
 
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
-import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -14,12 +12,10 @@ import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
-import android.os.Message;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -50,6 +46,8 @@ public class HomeActivity extends AppCompatActivity {
     private static final int SOLICITA_CONEXAO = 2;
     private static final int MESSAGE_READ = 3;
 
+    private static int MEDIU = 4;
+
     boolean conexao = false;
     private static String MAC = null;
 
@@ -63,7 +61,7 @@ public class HomeActivity extends AppCompatActivity {
 
 
 
-    @SuppressLint({"SetJavaScriptEnabled", "HandlerLeak"})
+    @SuppressLint({"SetJavaScriptEnabled", "HandlerLeak", "SetTextI18n"})
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -84,8 +82,8 @@ public class HomeActivity extends AppCompatActivity {
         btConectar = (Button) findViewById(R.id.btConectar);
         btMedir = (Button) findViewById(R.id.btMedir);
         txtTemp = (TextView) findViewById(R.id.txtTemp);
-        txtBatimento = (TextView) findViewById(R.id.txtBatimento);
         txtOximetro = (TextView) findViewById(R.id.txtOximetro);
+        txtBatimento = (TextView) findViewById(R.id.txtBatimento);
 
 
         bluetoothAdapter = BluetoothAdapter.getDefaultAdapter();
@@ -119,15 +117,26 @@ public class HomeActivity extends AppCompatActivity {
                 loadd.postDelayed(new Runnable() {
                     @Override
                     public void run() {
+                        txtOximetro.setText("98,7%");
                         txtTemp.setText("36,1 °C");
                         txtBatimento.setText("83 bpm");
-                        txtOximetro.setText("98,7%");
                         loadingDialog.HideDialog();
                         Toast.makeText(getApplicationContext(), "Medições realizadas com sucesso!", Toast.LENGTH_LONG).show();
+                        MEDIU = 5;
                     }
                 }, 5000);
             }
         });
+
+        if (MEDIU == 5) {
+            txtOximetro.setText("98,7%");
+            txtTemp.setText("36,1 °C");
+            txtBatimento.setText("83 bpm");
+        } else {
+            txtOximetro.setText("");
+            txtTemp.setText("");
+            txtBatimento.setText("");
+        }
 
         // SENTINDO ACTIVITY
         Button btSentindo = findViewById(R.id.btSentindo);

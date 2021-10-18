@@ -50,7 +50,7 @@
     <string name="batimento">Ritmo Cardíaco: </string>
     <string name="temp">Temperatura: </string>
     <string name="oxmetro">Oxímetro: </string>
-    <string name="load">Loading...</string>
+    <string name="load">Medindo...</string>
 
 
     <!-- SENTINDO -->

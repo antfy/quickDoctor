@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
+import android.app.ProgressDialog;
 import android.bluetooth.BluetoothAdapter;
 import android.bluetooth.BluetoothDevice;
 import android.bluetooth.BluetoothSocket;
@@ -41,6 +42,7 @@ public class HomeActivity extends AppCompatActivity {
 
     Button btConectar, btMedir;
     TextView txtTemp, txtBatimento, txtOximetro;
+    LoadingDialog loadingDialog;
     ConnectedThread connectedThread;
     Handler mHandler;
 
@@ -107,14 +109,12 @@ public class HomeActivity extends AppCompatActivity {
         });
 
         // LOADING
-        final LoadingDialog loadingDialog = new LoadingDialog(HomeActivity.this);
-
+        loadingDialog = new LoadingDialog(this);
         btMedir.setOnClickListener(new View.OnClickListener() {
-            @SuppressLint("SetTextI18n")
+            @SuppressLint({"SetTextI18n", "ResourceType"})
             @Override
             public void onClick(View view) {
-                loadingDialog.startLoadingDialog();
-
+                loadingDialog.ShowDialog("Medindo...");
                 Handler loadd = new Handler();
                 loadd.postDelayed(new Runnable() {
                     @Override
@@ -122,14 +122,12 @@ public class HomeActivity extends AppCompatActivity {
                         txtTemp.setText("36,1 °C");
                         txtBatimento.setText("83 bpm");
                         txtOximetro.setText("98,7%");
-                        loadingDialog.dismissDialog();
+                        loadingDialog.HideDialog();
+                        Toast.makeText(getApplicationContext(), "Medições realizadas com sucesso!", Toast.LENGTH_LONG).show();
                     }
-                }, 1000);
-
+                }, 5000);
             }
         });
-
-
 
         // SENTINDO ACTIVITY
         Button btSentindo = findViewById(R.id.btSentindo);

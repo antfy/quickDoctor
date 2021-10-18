@@ -2,30 +2,34 @@ package com.example.quickdoctor;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.app.Dialog;
+import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.view.LayoutInflater;
+import android.widget.TextView;
 
 class LoadingDialog {
 
-    private Activity activity;
-    private AlertDialog dialog;
+    Context context;
+    Dialog dialog;
 
-    LoadingDialog(Activity myActivity) {
-        activity = myActivity;
-
+    public LoadingDialog (Context context) {
+        this.context = context;
     }
 
-    void startLoadingDialog() {
-        AlertDialog.Builder builder = new AlertDialog.Builder(activity);
+    public void ShowDialog(String title) {
+        dialog = new Dialog(context);
+        dialog.setContentView(R.layout.dialog);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
 
-        LayoutInflater inflater = activity.getLayoutInflater();
-        builder.setView(inflater.inflate(R.layout.custom_dialog, null));
-        builder.setCancelable(true);
-
-        dialog = builder.create();
+        TextView titleTextView = dialog.findViewById(R.id.txtLoad);
+        titleTextView.setText(title);
+        dialog.create();
         dialog.show();
     }
 
-    void dismissDialog() {
-        dismissDialog();
+    public void HideDialog() {
+        dialog.dismiss();
     }
 }

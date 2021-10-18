@@ -112,6 +112,11 @@ public class HomeActivity extends AppCompatActivity {
             @SuppressLint({"SetTextI18n", "ResourceType"})
             @Override
             public void onClick(View view) {
+                MEDIU = 4;
+                txtOximetro.setText("");
+                txtTemp.setText("");
+                txtBatimento.setText("");
+
                 loadingDialog.ShowDialog("Medindo...");
                 Handler loadd = new Handler();
                 loadd.postDelayed(new Runnable() {
@@ -121,7 +126,7 @@ public class HomeActivity extends AppCompatActivity {
                         txtTemp.setText("36,1 °C");
                         txtBatimento.setText("83 bpm");
                         loadingDialog.HideDialog();
-                        Toast.makeText(getApplicationContext(), "Medições realizadas com sucesso!", Toast.LENGTH_LONG).show();
+                        Toast.makeText(getApplicationContext(), "Medições realizadas com sucesso!", Toast.LENGTH_SHORT).show();
                         MEDIU = 5;
                     }
                 }, 5000);
@@ -132,10 +137,6 @@ public class HomeActivity extends AppCompatActivity {
             txtOximetro.setText("98,7%");
             txtTemp.setText("36,1 °C");
             txtBatimento.setText("83 bpm");
-        } else {
-            txtOximetro.setText("");
-            txtTemp.setText("");
-            txtBatimento.setText("");
         }
 
         // SENTINDO ACTIVITY

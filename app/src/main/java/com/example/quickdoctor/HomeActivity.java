@@ -136,7 +136,7 @@ public class HomeActivity extends AppCompatActivity {
         // MENSAGEM WHATSAPP
         Button btMensagem = findViewById(R.id.btMensagens);
         btMensagem.setOnClickListener(v -> {
-            String wpp = "https://api.whatsapp.com/send?phone=11968600508";
+            String wpp = "https://api.whatsapp.com/";
             Intent intent = new Intent(Intent.ACTION_VIEW);
             intent.setData(Uri.parse(wpp));
             startActivity(intent);

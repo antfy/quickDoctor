@@ -1936,6 +1936,9 @@ id auto
 id autoComplete
 id autoCompleteToEnd
 id autoCompleteToStart
+id b1
+id b2
+id b3
 id barrier
 id baseline
 id beginOnFirstDraw
@@ -2024,6 +2027,7 @@ id disjoint
 id divider
 id divider2
 id divider3
+id divider4
 id dragAnticlockwise
 id dragClockwise
 id dragDown

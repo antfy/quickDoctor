@@ -12,12 +12,12 @@ com/example/quickdoctor/PerfilActivity.java
  com.example.quickdoctor.PerfilActivity$1
 com/example/quickdoctor/SentindoActivity.java
  com.example.quickdoctor.SentindoActivity
-com/example/quickdoctor/MainActivity.java
- com.example.quickdoctor.MainActivity
-com/example/quickdoctor/NoticiasActivity.java
- com.example.quickdoctor.NoticiasActivity
 com/example/quickdoctor/BuildConfig.java
  com.example.quickdoctor.BuildConfig
+com/example/quickdoctor/NoticiasActivity.java
+ com.example.quickdoctor.NoticiasActivity
+com/example/quickdoctor/MainActivity.java
+ com.example.quickdoctor.MainActivity
 com/example/quickdoctor/HomeActivity.java
  com.example.quickdoctor.HomeActivity
  com.example.quickdoctor.HomeActivity$1
